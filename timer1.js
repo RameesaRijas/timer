@@ -1,11 +1,12 @@
 const args = process.argv.slice(2);
 if(args.length) {
-  for (const number of args) {
-    if (number <= 0 && typeof number !== "number") {
-      return false;
+  for (let i = 0; i < args.length; i++) {
+    let number = Number(args[i]);
+    if (isNaN(number) || number <= 0) {
+      continue;
     }
     setTimeout(() => {
       process.stdout.write('\x07');
-    }, number * 1000)
+    }, args[i] * 1000)
   }
-} 
+}
